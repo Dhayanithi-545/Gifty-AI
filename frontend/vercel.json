@@ -2,8 +2,5 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
-  "installCommand": "npm install",
-  "env": {
-    "VITE_API_URL": "https://gifty-ai.onrender.com/api"
-  }
+  "installCommand": "npm install"
 }
