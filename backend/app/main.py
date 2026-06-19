@@ -28,6 +28,15 @@ def on_startup():
     db.init_db()
 
 
+@app.get("/")
+def root():
+    return {
+        "message": "Gifty backend running successfully",
+        "status": "operational",
+        "version": "1.0.0"
+    }
+
+
 @app.get("/api/health")
 def health_check():
     groq_configured = bool(GROQ_API_KEY := os.getenv("GROQ_API_KEY")) and GROQ_API_KEY != "your_groq_api_key_here"

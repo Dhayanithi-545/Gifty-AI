@@ -14,6 +14,7 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  timeout: 60000, // 60 second timeout
 });
 
 export const giftAPI = {
@@ -30,8 +31,14 @@ export const giftAPI = {
       return response.data;
     } catch (error: any) {
       // Re-throw with better error handling
+      if (error.code === 'ECONNABORTED') {
+        throw new Error('Request timeout - server took too long to respond');
+      }
       if (error.response) {
         throw error;
+      }
+      if (error.message.includes('Network Error')) {
+        throw new Error('Network error - unable to connect to server');
       }
       throw new Error('Failed to connect to the server');
     }
@@ -55,8 +62,14 @@ export const giftAPI = {
       const response = await api.post<ContactResult>('/review', request);
       return response.data;
     } catch (error: any) {
+      if (error.code === 'ECONNABORTED') {
+        throw new Error('Request timeout - server took too long to respond');
+      }
       if (error.response) {
         throw error;
+      }
+      if (error.message.includes('Network Error')) {
+        throw new Error('Network error - unable to connect to server');
       }
       throw new Error('Failed to connect to the server');
     }
