@@ -1,4 +1,4 @@
-import { Download, FileText, Copy } from 'lucide-react';
+import { FileText, Copy } from 'lucide-react';
 import type { ContactResult, RecommendedGift } from '../types/api';
 import ContactCard from './ContactCard';
 
