@@ -35,6 +35,7 @@ function App() {
       setApiHealth({ status: 'error', groq_key_configured: false, serper_key_configured: false });
     }
   };
+  
 
   const handleProcess = async () => {
     setProcessing(true);
@@ -141,9 +142,6 @@ function App() {
     alert('Copied to clipboard!');
   };
 
-  const handleExportPDF = () => {
-    alert('PDF export coming soon!');
-  };
 
   const handleDeleteProfile = (id: string) => {
     const updated = savedProfiles.filter(p => p.id !== id);
@@ -188,7 +186,6 @@ function App() {
                 results={results}
                 processingContacts={processingContacts}
                 onReviewAction={handleReviewAction}
-                onExportPDF={handleExportPDF}
                 onExportJSON={handleExportJSON}
                 onCopyToClipboard={handleCopyToClipboard}
               />

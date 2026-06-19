@@ -6,7 +6,6 @@ interface ResultsPanelProps {
   results: ContactResult[];
   processingContacts: Record<string, boolean>;
   onReviewAction: (contactName: string, action: 'approve' | 'reject' | 'edit' | 'regenerate', gift?: RecommendedGift, editedMessage?: string) => void;
-  onExportPDF: () => void;
   onExportJSON: () => void;
   onCopyToClipboard: () => void;
 }
@@ -15,7 +14,6 @@ export default function ResultsPanel({
   results,
   processingContacts,
   onReviewAction,
-  onExportPDF,
   onExportJSON,
   onCopyToClipboard,
 }: ResultsPanelProps) {
