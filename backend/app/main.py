@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.models import (
     RunRequest, RunResponse, ReviewActionRequest, ContactResult, ContactInput,
+    ProfileSignals, SearchTrace, HumanReview, GuardrailReport,
 )
 from app.pipeline.orchestrator import run_workflow_for_contact, regenerate_workflow_for_contact
 from app import db
@@ -53,11 +54,11 @@ def run_pipeline(request: RunRequest):
         except Exception as error:
             result = ContactResult(
                 contact_name=contact.name,
-                profile_signals={"strong_signals": [], "weak_signals": [], "signals_to_avoid": []},
-                search_trace={"queries_used": [], "provider_used": "none", "products_considered_count": 0},
+                profile_signals=ProfileSignals(),
+                search_trace=SearchTrace(),
                 recommended_gifts=[],
-                human_review={"status": "pending_review"},
-                guardrail_report={"blocked_terms_found": [], "signals_removed": [], "passed": True},
+                human_review=HumanReview(),
+                guardrail_report=GuardrailReport(),
                 warnings=[f"Pipeline failed for this contact: {str(error)}"],
             )
 
