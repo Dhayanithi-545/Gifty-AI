@@ -5,10 +5,11 @@ import GiftCard from './GiftCard';
 
 interface ContactCardProps {
   result: ContactResult;
+  isProcessing?: boolean;
   onReviewAction: (contactName: string, action: 'approve' | 'reject' | 'edit' | 'regenerate', gift?: RecommendedGift, editedMessage?: string) => void;
 }
 
-export default function ContactCard({ result, onReviewAction }: ContactCardProps) {
+export default function ContactCard({ result, isProcessing = false, onReviewAction }: ContactCardProps) {
   const [expanded, setExpanded] = useState(true);
   const [activeTab, setActiveTab] = useState<'recommendations' | 'signals' | 'search' | 'trace'>('recommendations');
   const [editingGift, setEditingGift] = useState<number | null>(null);
@@ -29,7 +30,13 @@ export default function ContactCard({ result, onReviewAction }: ContactCardProps
   };
 
   return (
-    <div className="bg-white/90 border border-slate-200/60 rounded-2xl shadow-sm mb-5 overflow-hidden transition-all duration-300 hover:shadow-md">
+    <div className="bg-white/90 border border-slate-200/60 rounded-2xl shadow-sm mb-5 overflow-hidden transition-all duration-300 hover:shadow-md relative">
+      {isProcessing && (
+        <div className="absolute inset-0 bg-white/70 backdrop-blur-[2px] z-20 flex flex-col items-center justify-center gap-3 transition-all duration-300">
+          <div className="w-10 h-10 border-4 border-slate-200 border-t-brand-600 rounded-full animate-spin"></div>
+          <span className="text-sm font-bold text-slate-700 font-display">Updating recommendations...</span>
+        </div>
+      )}
       <div
         className="flex items-center justify-between p-4.5 cursor-pointer hover:bg-slate-50/50 transition-colors"
         onClick={() => setExpanded(!expanded)}
@@ -40,8 +47,18 @@ export default function ContactCard({ result, onReviewAction }: ContactCardProps
           </div>
           <div>
             <h3 className="text-lg font-bold text-slate-800 font-display">{result.contact_name}</h3>
-            <div className="flex items-center gap-3 text-xs font-medium text-slate-500 mt-0.5">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-slate-500 mt-0.5">
               <span className="px-2 py-0.5 bg-slate-100 rounded-md">{result.recommended_gifts.length} recommended</span>
+              
+              <span className={`px-2 py-0.5 rounded-md font-bold uppercase tracking-wider border ${
+                result.human_review.status === 'approved' ? 'bg-emerald-50 text-emerald-700 border-emerald-200/60' :
+                result.human_review.status === 'rejected' ? 'bg-rose-50 text-rose-700 border-rose-200/60' :
+                result.human_review.status === 'edited' ? 'bg-indigo-50 text-indigo-700 border-indigo-200/60' :
+                'bg-amber-50 text-amber-700 border-amber-200/60'
+              }`}>
+                {result.human_review.status.replace('_', ' ')}
+              </span>
+
               {result.warnings.length > 0 && (
                 <span className="flex items-center gap-1 text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md">
                   <AlertCircle className="w-3.5 h-3.5" />
@@ -105,6 +122,7 @@ export default function ContactCard({ result, onReviewAction }: ContactCardProps
                     <div key={gift.rank} id={`gift-card-${result.contact_name}-${gift.rank}`}>
                       <GiftCard
                         gift={gift}
+                        status={result.human_review.status}
                         onApprove={() => onReviewAction(result.contact_name, 'approve')}
                         onReject={() => onReviewAction(result.contact_name, 'reject')}
                         onEdit={() => handleEditGift(gift)}

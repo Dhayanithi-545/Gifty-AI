@@ -1,0 +1,57 @@
+{
+  "contacts": {
+    "Aarav Mehta": {
+      "id": 1,
+      "contact_name": "Aarav Mehta",
+      "input_json": "{\"name\": \"Aarav Mehta\", \"role\": \"VP Sales\", \"company\": \"Acme Corp\", \"location\": \"Bengaluru, India\", \"linkedin_profile\": {\"headline\": \"VP Sales at Acme Corp | Enterprise SaaS | GTM Leadership\", \"about\": \"I enjoy building high-performing revenue teams and scaling SaaS businesses across India and Southeast Asia.\", \"experience\": [{\"title\": \"VP Sales\", \"company\": \"Acme Corp\", \"description\": \"Leading enterprise sales, strategic accounts, and GTM expansion.\"}, {\"title\": \"Regional Sales Director\", \"company\": \"Salesforce\", \"description\": \"Managed enterprise accounts across BFSI and retail.\"}], \"recent_posts\": [\"Great sales teams are built on trust, coaching, and consistency.\", \"India's SaaS ecosystem is entering an exciting new phase.\", \"Still recovering from yesterday's India vs Australia match. What a game!\"], \"recent_comments\": [\"Completely agree, pipeline discipline matters more than heroic end-of-quarter selling.\", \"Loved this take on customer-led growth.\", \"Cricket teaches leadership better than most management books.\"], \"engaged_topics\": [\"Cricket\", \"Revenue leadership\", \"SaaS GTM\", \"Customer-led growth\", \"Team building\"]}, \"relationship_context\": {\"relationship_type\": \"Prospective customer\", \"last_interaction\": \"Positive discovery call last week\", \"business_goal\": \"Nurture relationship before follow-up meeting\"}, \"gift_context\": {\"occasion\": \"Post-meeting thank you\", \"budget_min\": 100.0, \"budget_max\": 5000.0, \"currency\": \"INR\", \"country\": \"India\", \"tone\": \"warm\"}}",
+      "result_json": "{\"contact_name\": \"Aarav Mehta\", \"profile_signals\": {\"strong_signals\": [\"cricket\"], \"weak_signals\": [\"books on sales leadership\", \"premium desk organization\"], \"signals_to_avoid\": []}, \"search_trace\": {\"queries_used\": [\"cricket bat in India\", \"leather desk organizer in India\", \"sales leadership book in India\"], \"provider_used\": \"serper\", \"products_considered_count\": 24, \"fallback_triggered\": false}, \"recommended_gifts\": [{\"rank\": 1, \"gift_name\": \"SG Scorer Classic Kashmir Willow Cricket Bat\", \"product_url\": \"https://www.google.com/search?ibp=oshop&q=cricket+bat+in+India&prds=localAnnotatedOfferId:1,catalogid:13373147529815885650,pvo:2,pvt:hg,rds:PC_6027158597472037202%7CPROD_PC_6027158597472037202&gl=in&udm=28&pvorigin=2\", \"store\": \"amazon.in\", \"estimated_price\": \"\\u20b92,416\", \"why_this_gift\": \"The SG Scorer Classic Kashmir Willow Cricket Bat is a high-quality product that aligns with the individual's interest in cricket, providing a premium tool for the sport.\", \"personalisation_reasoning\": \"The strong signal of cricket drove this pick, as it is a direct match to the individual's interest.\", \"personalised_message\": \"I wanted to thank you again for taking the time to meet with me and discuss how we can work together. Given your interest in cricket, I thought you might appreciate this SG Scorer Classic Kashmir Willow Cricket Bat, a top-notch tool for the sport that I hope will help you take your game to the next level. I'm looking forward to the possibility of collaborating and exploring ways we can support each other's goals.\", \"confidence_score\": 0.95, \"risk_level\": \"low\", \"assumptions\": [\"The individual is an active cricket player or enthusiast\"]}, {\"rank\": 2, \"gift_name\": \"Decathlon Adult Cricket Bat Tennis Ball T500\", \"product_url\": \"https://www.google.com/search?ibp=oshop&q=cricket+bat+in+India&prds=localAnnotatedOfferId:1,catalogid:13074305511883473513,pvo:2,pvt:hg,rds:PC_6027158597472037202%7CPROD_PC_6027158597472037202&gl=in&udm=28&pvorigin=2\", \"store\": \"Decathlon Sports India\", \"estimated_price\": \"\\u20b9899\", \"why_this_gift\": \"The Decathlon Adult Cricket Bat Tennis Ball T500 is a suitable gift for a cricket enthusiast, offering a good balance between quality and affordability.\", \"personalisation_reasoning\": \"The strong signal of cricket drove this pick, as it is a relevant match to the individual's interest.\", \"personalised_message\": \"I wanted to thank you again for taking the time to meet with me and discuss how we can work together. Given your interest in cricket, I thought you might appreciate this cricket bat and ball set from Decathlon, a great tool for practicing your skills. I hope you find it useful and enjoyable, and I look forward to the possibility of working with you in the future.\", \"confidence_score\": 0.85, \"risk_level\": \"low\", \"assumptions\": [\"The individual is a casual cricket player or enthusiast\"]}, {\"rank\": 3, \"gift_name\": \"Premium Leather Desk Organizer Tray for Office & Home | Multi-Compartment Valet Tray for Mobile, Wallet, Keys, Watch & Accessories | Luxury Table\", \"product_url\": \"https://www.google.com/search?ibp=oshop&q=leather+desk+organizer+in+India&prds=localAnnotatedOfferId:1,productid:3164883633973504040,pvo:2,pvt:hg,rds:PC_6027158597472037202%7CPROD_PC_6027158597472037202&gl=in&udm=28&pvorigin=2\", \"store\": \"Amazon.in\", \"estimated_price\": \"\\u20b9799\", \"why_this_gift\": \"The Premium Leather Desk Organizer Tray is a high-quality workspace utility that can help keep the individual's workspace organized and clutter-free.\", \"personalisation_reasoning\": \"The weak signal of premium desk organization drove this pick, as it is a relevant match to the individual's potential interest in maintaining a tidy workspace.\", \"personalised_message\": \"I wanted to thank you again for taking the time to meet with me and discuss how we can work together. Given your appreciation for a well-organized workspace, I thought you might appreciate this premium leather desk organizer tray to help keep your office and home workspace tidy. It's a small way for me to show my appreciation for your time and consideration. I look forward to the possibility of working together in the future.\", \"confidence_score\": 0.7, \"risk_level\": \"low\", \"assumptions\": [\"The individual values a well-organized workspace\"]}], \"human_review\": {\"status\": \"approved\", \"available_actions\": [\"approve\", \"reject\", \"edit\", \"regenerate\"], \"reviewer_note\": null}, \"guardrail_report\": {\"blocked_terms_found\": [], \"signals_removed\": [], \"passed\": true}, \"warnings\": []}",
+      "review_status": "approved",
+      "created_at": "2026-06-19T10:00:27.141859+00:00",
+      "updated_at": "2026-06-19T10:04:03.253255+00:00"
+    }
+  },
+  "review_logs": [
+    {
+      "id": 1,
+      "contact_record_id": 1,
+      "action": "approved",
+      "note": null,
+      "created_at": "2026-06-19T10:02:02.018590+00:00"
+    },
+    {
+      "id": 2,
+      "contact_record_id": 1,
+      "action": "approved",
+      "note": null,
+      "created_at": "2026-06-19T10:02:06.722055+00:00"
+    },
+    {
+      "id": 3,
+      "contact_record_id": 1,
+      "action": "rejected",
+      "note": null,
+      "created_at": "2026-06-19T10:02:08.986578+00:00"
+    },
+    {
+      "id": 4,
+      "contact_record_id": 1,
+      "action": "rejected",
+      "note": null,
+      "created_at": "2026-06-19T10:02:14.044572+00:00"
+    },
+    {
+      "id": 5,
+      "contact_record_id": 1,
+      "action": "approved",
+      "note": null,
+      "created_at": "2026-06-19T10:02:19.525113+00:00"
+    },
+    {
+      "id": 6,
+      "contact_record_id": 1,
+      "action": "approved",
+      "note": null,
+      "created_at": "2026-06-19T10:04:03.253279+00:00"
+    }
+  ]
+}

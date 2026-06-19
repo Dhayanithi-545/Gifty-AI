@@ -13,6 +13,7 @@ function App() {
   const [error, setError] = useState<string | null>(null);
   const [savedProfiles, setSavedProfiles] = useState<SavedProfile[]>([]);
   const [apiHealth, setApiHealth] = useState<{ status: string; groq_key_configured: boolean; serper_key_configured: boolean } | null>(null);
+  const [processingContacts, setProcessingContacts] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     loadSavedProfiles();
@@ -94,6 +95,7 @@ function App() {
     gift?: RecommendedGift,
     editedMessage?: string
   ) => {
+    setProcessingContacts(prev => ({ ...prev, [contactName]: true }));
     try {
       const updated = await giftAPI.reviewAction({
         contact_name: contactName,
@@ -118,6 +120,8 @@ function App() {
         errorMessage = e.message;
       }
       alert(errorMessage);
+    } finally {
+      setProcessingContacts(prev => ({ ...prev, [contactName]: false }));
     }
   };
 
@@ -182,6 +186,7 @@ function App() {
             <div className="lg:h-full lg:overflow-hidden pb-4 pr-1">
               <ResultsPanel
                 results={results}
+                processingContacts={processingContacts}
                 onReviewAction={handleReviewAction}
                 onExportPDF={handleExportPDF}
                 onExportJSON={handleExportJSON}

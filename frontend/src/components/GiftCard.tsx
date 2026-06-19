@@ -3,6 +3,7 @@ import type { RecommendedGift } from '../types/api';
 
 interface GiftCardProps {
   gift: RecommendedGift;
+  status?: string;
   onApprove: () => void;
   onReject: () => void;
   onEdit: () => void;
@@ -16,6 +17,7 @@ interface GiftCardProps {
 
 export default function GiftCard({
   gift,
+  status = 'pending_review',
   onApprove,
   onReject,
   onEdit,
@@ -41,8 +43,17 @@ export default function GiftCard({
     return 'bg-rose-500';
   };
 
+  const getBorderColor = () => {
+    switch (status) {
+      case 'approved': return 'border-emerald-300 bg-emerald-50/5 shadow-emerald-50/10';
+      case 'rejected': return 'border-rose-200 bg-rose-50/5 opacity-80 shadow-rose-50/5';
+      case 'edited': return 'border-indigo-300 bg-indigo-50/5 shadow-indigo-50/10';
+      default: return 'border-slate-200/50 hover:border-slate-200';
+    }
+  };
+
   return (
-    <div className="bg-slate-50/40 border border-slate-200/50 rounded-2xl p-5 shadow-sm transition-all duration-200 hover:border-slate-200">
+    <div className={`bg-slate-50/40 border rounded-2xl p-5 shadow-sm transition-all duration-300 ${getBorderColor()}`}>
       <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4 mb-4">
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-2.5">
@@ -138,13 +149,25 @@ export default function GiftCard({
           <>
             <button
               onClick={onApprove}
-              className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition-all text-sm shadow-sm cursor-pointer"
+              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 font-semibold rounded-xl transition-all text-sm cursor-pointer ${
+                status === 'approved'
+                  ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm'
+                  : status === 'rejected'
+                  ? 'bg-slate-100 hover:bg-slate-200 text-slate-400 border border-slate-200/30 opacity-50'
+                  : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-100'
+              }`}
             >
               <Check className="w-4 h-4" /> Approve
             </button>
             <button
               onClick={onReject}
-              className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-xl transition-all text-sm shadow-sm cursor-pointer"
+              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 font-semibold rounded-xl transition-all text-sm cursor-pointer ${
+                status === 'rejected'
+                  ? 'bg-rose-600 hover:bg-rose-700 text-white shadow-sm'
+                  : status === 'approved'
+                  ? 'bg-slate-100 hover:bg-slate-200 text-slate-400 border border-slate-200/30 opacity-50'
+                  : 'bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-100'
+              }`}
             >
               <X className="w-4 h-4" /> Reject
             </button>
