@@ -56,13 +56,7 @@ export default function ResultsPanel({
             <FileText className="w-3.5 h-3.5" />
             <span>JSON</span>
           </button>
-          {/* <button
-            onClick={onExportPDF}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-sm transition-all cursor-pointer"
-          >
-            <Download className="w-3.5 h-3.5" />
-            <span>PDF</span>
-          </button> */}
+         
         </div>
       </div>
 
